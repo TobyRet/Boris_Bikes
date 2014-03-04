@@ -20,7 +20,7 @@ module BikeContainer
 
   def dock(bike)
     raise "There is no more room for bikes" if full?
-    bikes << bike
+    bikes << bike if bike.instance_of?(Bike)
   end
 
   def release(bike)

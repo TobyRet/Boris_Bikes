@@ -39,9 +39,15 @@ describe BikeContainer do
 
   it "should not release a bike if its not a bike" do
     bike = 34
-    holder.dock(bike)
+    fill_holder(holder)
     holder.release(bike)
-    expect(holder.bike_count).to eq(1)
+    expect(holder.bike_count).to eq(10)
+  end
+
+  it "should not dock a bike if it's not a bike" do
+    bike = 34
+    holder.dock(bike)
+    expect(holder.bike_count).to eq(0)
   end
 
   it "should provide the list of available bikes" do
