@@ -25,7 +25,7 @@ module BikeContainer
 
   def release(bike)
     raise "There are no bikes left" if empty?
-    bikes.delete(bike)
+    bikes.delete(bike) if bike.instance_of?(Bike)
   end
 
   def full?
