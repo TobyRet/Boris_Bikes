@@ -8,5 +8,4 @@ describe Garage do
   it "should allow setting default capacity on initialising" do
     expect(garage.capacity).to eq(500)
   end
-
 end
