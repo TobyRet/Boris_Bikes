@@ -8,9 +8,11 @@ class Van
     self.capacity = options.fetch(:capacity, capacity)
   end
 
-  def transport_to_garage(broken_bikes)
-      dock(broken_bikes)
-      release(broken_bikes)
+  def collect_broken_bikes_from(station)
+    station.all_broken_bikes.each do |bike| 
+      dock(bike)
+      station.release(bike)
+    end
   end
 
 end
