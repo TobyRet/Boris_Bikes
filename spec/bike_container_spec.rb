@@ -70,7 +70,7 @@ describe BikeContainer do
     bike1 = Bike.new.break
     bike2 = Bike.new.break
     broken_bikes = [bike1, bike2]
-    expect(holder.pickup(broken_bikes)).to eq([bike1, bike2])
+    expect(holder.take(broken_bikes)).to eq([bike1, bike2])
   end
 
   it "should unload bikes" do
@@ -79,7 +79,7 @@ describe BikeContainer do
     holder.dock(bike1)
     holder.dock(bike2)
     bikes = [bike1, bike2]
-    holder.deliver(bikes)
+    holder.give(bikes)
     expect(holder.bike_count).to eq(0)
   end
 
