@@ -36,4 +36,13 @@ describe Van do
     expect(garage.bikes).to include(broken_bike)
     expect(van).to be_empty
   end
+
+  it "should collect fixed bikes from the Garage" do
+    fixed_bike = Bike.new
+    garage.dock(fixed_bike)
+    van.collect_fixed_bikes_from(garage)
+    expect(van.bikes).to include(fixed_bike)
+    expect(garage).to be_empty
+  end
+
 end
