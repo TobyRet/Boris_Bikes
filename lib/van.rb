@@ -1,4 +1,4 @@
-
+require_relative 'bike_container'
 
 class Van
 
@@ -8,17 +8,12 @@ class Van
     self.capacity = options.fetch(:capacity, capacity)
   end
 
-  def collect_available_bikes_from(station)
-    station.available_bikes.each do |bike|
+  def collect_broken_bikes_from(station)
+    station.broken_bikes.each do |bike|
       # "self" refers to the van
-      self.dock(bike)
       station.release(bike)
+      self.dock(bike)
     end
   end
-
-  #def pickup(station)
-  #  take.(station.broken_bikes)
-  #  station.give(broken_bikes)
-  #end
 
 end

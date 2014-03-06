@@ -1,4 +1,4 @@
-require 'bike_container'
+require './lib/bike_container'
 
 class ContainerHolder; include BikeContainer; end
 class User; end
@@ -65,24 +65,6 @@ describe BikeContainer do
     holder.dock(broken_bike)
     expect(holder.broken_bikes).to eq([broken_bike])
   end
-
-  it "should take broken bikes" do
-    bike1 = Bike.new.break
-    bike2 = Bike.new.break
-    broken_bikes = [bike1, bike2]
-    expect(holder.take(broken_bikes)).to eq([bike1, bike2])
-  end
-
-  it "should unload bikes" do
-    bike1 = Bike.new
-    bike2 = Bike.new
-    holder.dock(bike1)
-    holder.dock(bike2)
-    bikes = [bike1, bike2]
-    holder.give(bikes)
-    expect(holder.bike_count).to eq(0)
-  end
-
 
   def fill_holder(holder)
     holder.capacity.times { holder.dock(Bike.new) }
