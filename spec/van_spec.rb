@@ -45,4 +45,11 @@ describe Van do
     expect(garage).to be_empty
   end
 
+  it "should deliver fixed bikes to the Docking Station" do
+    fixed_bike = Bike.new
+    van.dock(fixed_bike)
+    van.deliver_fixed_bikes_to(station)
+    expect(station.bikes).to include(fixed_bike)
+    expect(van).to be_empty
+  end
 end

@@ -28,4 +28,12 @@ class Van
       self.dock(bike)
     end
   end
+
+  def deliver_fixed_bikes_to(station)
+    self.available_bikes.each do |bike|
+      self.release(bike)
+      station.dock(bike)
+    end
+  end
+
 end
