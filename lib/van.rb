@@ -16,4 +16,12 @@ class Van
     end
   end
 
+  def deliver_broken_bikes_to(garage)
+    self.broken_bikes.each do |bike|
+      # "self" refers to the van
+      self.release(bike)
+      garage.dock(bike)
+    end
+  end
+
 end

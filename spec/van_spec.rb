@@ -1,7 +1,8 @@
 require './lib/bike_container'
-require './lib/bike'
 require './lib/van'
 require './lib/docking_station'
+require './lib/garage'
+require './lib/bike'
 
 
 describe Van do 
@@ -16,8 +17,6 @@ describe Van do
 
   it "should collect broken bikes from the Station" do 
     #1. Prepare for the test
-    station = DockingStation.new
-    van = Van.new
     broken_bike = Bike.new
     broken_bike.break
     station.dock(broken_bike)
@@ -29,5 +28,12 @@ describe Van do
     # 1 is optional. 2 an 3 are not.
   end
 
-  
+  it "should deliver broken bikes to the garage" do
+    broken_bike = Bike.new
+    broken_bike.break
+    van.dock(broken_bike)
+    van.deliver_broken_bikes_to(garage)
+    expect(garage.bikes).to include(broken_bike)
+    expect(van).to be_empty
+  end
 end
