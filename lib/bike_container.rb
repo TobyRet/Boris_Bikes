@@ -44,8 +44,12 @@ module BikeContainer
     bikes.select {|bike| bike.broken?}
   end
 
-  def take(broken_bikes)
-    broken_bikes.each {|bike| dock(bike)}
+  def pickup(bikes)
+    bikes.each {|bike| dock(bike)}
+  end
+
+  def deliver(bikes)
+    bikes.each {|bike| release(bike)}
   end
 
 end
