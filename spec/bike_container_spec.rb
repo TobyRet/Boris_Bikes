@@ -66,6 +66,15 @@ describe BikeContainer do
     expect(holder.broken_bikes).to eq([broken_bike])
   end
 
+  it "should take broken bikes" do
+    bike1 = Bike.new.break
+    bike2 = Bike.new.break
+    broken_bikes = [bike1, bike2]
+    expect(holder.take(broken_bikes)).to eq([bike1, bike2])
+  end
+
+
+
 
   def fill_holder(holder)
     holder.capacity.times { holder.dock(Bike.new) }
